@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2021_06_12_110412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "bonds", force: :cascade do |t|
     t.bigint "user_id"

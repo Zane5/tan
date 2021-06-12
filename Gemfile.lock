@@ -47,9 +47,9 @@ GEM
     activerecord (6.1.3.2)
       activemodel (= 6.1.3.2)
       activesupport (= 6.1.3.2)
-    activerecord-postgis-adapter (6.0.1)
-      activerecord (~> 6.0)
-      rgeo-activerecord (~> 6.0)
+    activerecord-postgis-adapter (7.1.0)
+      activerecord (~> 6.1)
+      rgeo-activerecord (~> 7.0.0)
     activestorage (6.1.3.2)
       actionpack (= 6.1.3.2)
       activejob (= 6.1.3.2)
@@ -152,7 +152,7 @@ GEM
     regexp_parser (2.1.1)
     rexml (3.2.5)
     rgeo (2.3.0)
-    rgeo-activerecord (6.2.2)
+    rgeo-activerecord (7.0.1)
       activerecord (>= 5.0)
       rgeo (>= 1.0.0)
     rspec-core (3.10.1)
@@ -230,7 +230,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord-postgis-adapter (~> 6)
+  activerecord-postgis-adapter (~> 7)
   annotate (~> 3)
   bootsnap (>= 1.4.4)
   byebug
