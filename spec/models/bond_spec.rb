@@ -25,7 +25,6 @@ RSpec.describe Bond, type: :model do
     it "validates the state correctly" do
       friend = User.new
       user = User.new
-
       bond = Bond.new(
         user: user,
         friend: friend
