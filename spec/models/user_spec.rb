@@ -65,6 +65,26 @@ RSpec.describe User, type: :model do
     end
 
     it "invalid if the email looks bogus" do
+      user = create_a_user
+      expect(user.valid?).to be true
+
+      user.email = ""
+      expect(user.valid?).to be false
+
+      user.email = "foo.bar"
+      expect(user.valid?).to be false
+
+      user.email = "foo.bar#example.com"
+      expect(user.valid?).to be false
+
+      user.email = "fo.o.b.a.r@example.com"
+      expect(user.valid?).to be true
+
+      user.email = "foo+bar@example.com"
+      expect(user.valid?).to be true
+
+      user.email = "foo.bar@sub.example.co.nz"
+      expect(user.valid?).to be true
     end
   end
 end
