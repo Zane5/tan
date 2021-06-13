@@ -101,13 +101,6 @@ Metrics/BlockLength:
     - "spec/**/*.rb"
     - "**/*.gemspec"
 
-RSpec/ExampleLength:
-  IgnoredMethods: ["describe", "context"]
-  Exclude:
-    - "Rakefile"
-    - "**/*.rake"
-    - "spec/**/*.rb"
-
 Metrics/ClassLength:
   Exclude:
     - lib/rubocop/config_obsoletion.rb
@@ -148,3 +141,10 @@ Performance/CollectionLiteralInLoop:
 
 RSpec/StubbedMock:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+  Max: 5
