@@ -24,8 +24,8 @@ class User < ApplicationRecord
     with: URI::MailTo::EMAIL_REGEXP,
     message: "must be a valid email address."
   }
-  validates :must_not_be_underage
-  validates :hashed_password
+  # validates :must_not_be_underage
+  # validates :hashed_password
 
   def must_not_be_underage
     age = birthday.year - Time.current.year
