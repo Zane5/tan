@@ -27,19 +27,52 @@ class User < ApplicationRecord
   # validates :must_not_be_underage
   # validates :hashed_password
 
-  def must_not_be_underage
-    age = birthday.year - Time.current.year
-    return if age < 18
+  has_many :posts
 
-    errors.add(:base, "must be at least 17 years old")
-  end
+  has_many :bonds
 
-  def password_never_be_used_before
-    reutrn if PastPassword.where(
-      user: self,
-      hashed_password: Digest::MD5.hexdigest(password)
-    ).blank?
+  has_many :followings,
+           #  -> { where("bonds.state = ?", Bond::FOLLOWING) },
+           -> { Bond.following },
+           through: :bonds,
+           source: :friend
 
-    errors.add(:password, "must be a new password")
+  has_many :follow_requests,
+           #  -> { where("bonds.state = ?", Bond::REQUESTING) },
+           -> { Bond.requesting },
+           through: :bonds,
+           source: :friend
+
+  has_many :inward_bonds,
+           class_name: "Bond",
+           foreign_key: :friend_id
+
+  has_many :followers,
+           -> { Bond.following },
+           through: :inward_bonds,
+           source: :user
+
+  # def must_not_be_underage
+  #   age = birthday.year - Time.current.year
+  #   return if age < 18
+
+  #   errors.add(:base, "must be at least 17 years old")
+  # end
+
+  # def password_never_be_used_before
+  #   reutrn if PastPassword.where(
+  #     user: self,
+  #     hashed_password: Digest::MD5.hexdigest(password)
+  #   ).blank?
+
+  #   errors.add(:password, "must be a new password")
+  # end
+
+  before_save :ensure_proper_name_case
+
+  private
+
+  def ensure_proper_name_case
+    self.first_name = first_name.capitalize
   end
 end
