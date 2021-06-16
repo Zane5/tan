@@ -52,6 +52,7 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'reek', require: false
   gem 'spring'
+  gem 'htmlbeautifier', "~>1.3.1"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
